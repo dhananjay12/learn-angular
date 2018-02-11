@@ -1,5 +1,17 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 .form-control.ng-touched.ng-invalid {
  border: 2px solid red;
+}
+
+.avatar {
+  position: relative;
+  z-index: 100;
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid rgba(0,0,30,0.5);
 }
 
