@@ -1,4 +1,4 @@
-## Followed following video and blog
+## Followed
 
 https://www.youtube.com/watch?v=88hE8_M53SA and https://alligator.io/angular/internationalization/
 
