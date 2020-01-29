@@ -57,9 +57,19 @@
                 }
               ]
             },
+            "en": {
+              "aot": true,
+              "outputPath": "dist/myapp-en/",
+              "baseHref": "/myapp-en/",
+              "i18nFile": "src/locale/messages.en.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "en",
+              "i18nMissingTranslation": "error"
+            },
             "nl": {
               "aot": true,
-              "outputPath": "dist/locale-nl/",
+              "outputPath": "dist/myapp-nl/",
+              "baseHref": "/myapp-nl/",
               "i18nFile": "src/locale/messages.nl.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "nl",

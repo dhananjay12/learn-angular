@@ -7,10 +7,12 @@
     "start:nl": "ng serve --configuration=nl",
     "build": "ng build",
     "build:nl": "ng build --configuration=nl",
+    "build:en": "ng build --configuration=en",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "int:extract": "ng xi18n --output-path src/locale"
+    "int:extract": "ng xi18n --output-path src/locale",
+    "build:i18n": "npm run build:en && npm run build:nl"
   },
   "private": true,
   "dependencies": {
