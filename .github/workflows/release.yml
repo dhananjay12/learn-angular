@@ -1,0 +1,53 @@
+on: push
+name: Build Angular
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd test-versioning
+
+      # caching NPM dependencies
+      # https://github.com/actions/cache/blob/master/examples.md#node---npm
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install and npm run build
+        run: |
+          npm i
+          npm version minor
+          npm run build:prod
+
+      - name: Prepare variables
+        id: vars
+        run: |
+          DOCKER_IMAGE=dhananjay12/angular-test-versioning
+          DOCKER_TAG=$(node -pe "require('./package.json').version")
+          echo ::set-output name=image::${DOCKER_IMAGE}
+          echo ::set-output name=tag::${DOCKER_TAG}
+
+      - name: Login to DockerHub
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: Build and tag Docker image
+        run: docker build . --file Dockerfile --tag ${{steps.vars.outputs.image}}:${{steps.vars.outputs.tag}}
+
+      - name: Push the tagged Docker image
+        run: docker push ${{steps.vars.outputs.image}}:${{steps.vars.outputs.tag}}
+
+      - name: Push tag to GitHub
+        run: git push
