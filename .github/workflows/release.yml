@@ -12,7 +12,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: cd test-versioning
 
       # caching NPM dependencies
       # https://github.com/actions/cache/blob/master/examples.md#node---npm
@@ -31,6 +30,7 @@ jobs:
 
       - name: npm install and npm run build
         run: |
+          cd test-versioning
           npm i
           npm version minor
           npm run build:prod
