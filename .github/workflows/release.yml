@@ -53,4 +53,8 @@ jobs:
         run: docker push ${{steps.vars.outputs.image}}:${{steps.vars.outputs.tag}}
 
       - name: Push tag to GitHub
-        run: git push
+        run: |
+          git config --global user.name 'Auto Releaser'
+          git config --global user.email 'autoReleaser@dhananjay12.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ GITHUB_REPOSITORY }}
+          git push
