@@ -7,6 +7,6 @@ import {environment} from '../environments/environment';
     <h3>v{{currentApplicationVersion}}</h3>`
 })
 export class AppComponent {
-  title = 'Demo App for Versioning';
+  title = 'Demo App for versioning';
     currentApplicationVersion = environment.appVersion;
 }
