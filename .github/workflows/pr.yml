@@ -5,8 +5,8 @@ on:
     paths:
       - 'test-versioning/**'
   pull_request:
-    paths: 
-      - 'test-versioning/**'
+    branches:
+      - master
 
 jobs:
   build:
