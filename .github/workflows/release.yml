@@ -11,16 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     # Set job outputs to values from filter step
     outputs:
-      backend: ${{ steps.filter.outputs.backend }}
       frontend: ${{ steps.filter.outputs.frontend }}
     steps:
-      # For pull requests it's not necessary to checkout the code
+      - uses: actions/checkout@v2
       - uses: dorny/paths-filter@v2
         id: filter
         with:
           filters: |
             frontend:
-              - 'test-frontend/**'
+              - 'test-versioning/**'
 
   # JOB to release frontend
   frontend:
