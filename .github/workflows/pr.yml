@@ -1,12 +1,9 @@
 name: Workflow for frontend PR
 
 on:
-  push:
+  pull_request:
     paths:
       - 'test-versioning/**'
-  pull_request:
-    branches:
-      - master
 
 jobs:
   build:
