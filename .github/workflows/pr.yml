@@ -1,13 +1,12 @@
 name: Workflow for frontend PR
 
 on:
-  push:
+  pull_request:
     paths:
       - 'test-versioning/**'
 
 jobs:
   build:
-    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     strategy:
       matrix:
