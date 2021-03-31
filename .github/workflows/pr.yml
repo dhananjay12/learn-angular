@@ -13,8 +13,6 @@ jobs:
         node-version: [14.x]
 
     steps:
-      - run: |
-          cd test-versioning
       - uses: actions/checkout@v2
 
       # caching NPM dependencies
