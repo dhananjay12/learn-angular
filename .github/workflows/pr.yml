@@ -1,8 +1,13 @@
+name: Workflow for frontend PR
+
 on:
+  push:
+    paths:
+      - 'test-versioning/**'
   pull_request:
     paths: 
       - 'test-versioning/**'
-name: Build Angular
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,7 +33,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Build and Release Image
+      - name: Just Build
         run: |
           cd test-versioning
           npm i

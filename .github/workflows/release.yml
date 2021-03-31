@@ -1,8 +1,10 @@
+name: Workflow for Release
+
 on:
   push:
     paths: 
       - 'test-versioning/**'
-name: Build Angular
+
 jobs:
   build:
     runs-on: ubuntu-latest
